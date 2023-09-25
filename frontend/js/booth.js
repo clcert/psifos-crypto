@@ -85,7 +85,7 @@ class BoothPsifos {
     // to compute the hash, not the JSON serialization in JavaScript.
     // the main reason for this is unicode representation: the Python approach
     // appears to be safer.
-    this.election = HELIOS.Election.fromJSONString(raw_json);
+    this.election = HELIOS.Election.fromJSONObject(raw_json);
 
     // FIXME: we shouldn't need to set both, but right now we are doing so
     // because different code uses each one. Bah. Need fixing.
@@ -346,7 +346,7 @@ var ELECTION = null;
 function do_setup(message) {
   console.log("setting up worker");
 
-  ELECTION = HELIOS.Election.fromJSONString(message.election);
+  ELECTION = HELIOS.Election.fromJSONObject(message.election);
 }
 
 function do_encrypt(message) {
